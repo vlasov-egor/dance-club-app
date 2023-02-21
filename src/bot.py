@@ -1,19 +1,26 @@
 import asyncio
-from aiogram import Bot
+from aiogram import Bot, Dispatcher
 from config import get_config
+from handlers.admins_handlers import admin_start_handler
 
 config = get_config()
+bot = Bot(token=config.TELEGRAM_BOT_TOKEN)
+dp = Dispatcher(bot)
 
 
 async def main():
-    bot = Bot(token=config.TELEGRAM_BOT_TOKEN)
-
     try:
-        me = await bot.get_me()
-        print(f"🤖 Hello, I'm {me.first_name}.\nHave a nice Day!")
+        dp.register_message_handler(admin_start_handler, commands="start")
+        await dp.start_polling()
+
+    except Exception as e:
+        # Todo: change to logging
+        print("Error starting bot", e)
+
     finally:
         session = await bot.get_session()
         await session.close()
 
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
