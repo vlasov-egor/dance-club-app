@@ -1,14 +1,17 @@
 import asyncio
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 
 from config import Settings
 from .db.db import Database
 
+settings = Settings()
+
 
 async def create_app():
-    app = FastAPI()
-    db = Database(Settings.DATABASE_URL)
+    db = Database(settings.DATABASE_URL)
+    # mb we can remove this dependency
+    app = FastAPI(dependencies=[Depends(db.get_session)])
 
     # app.include_router(...)
     return app
