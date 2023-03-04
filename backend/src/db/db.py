@@ -1,7 +1,11 @@
 import asyncio
+from typing import Any
 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_scoped_session
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+
+ModelBase: Any = declarative_base()
 
 
 class Database:
@@ -10,7 +14,8 @@ class Database:
             db_url,
             future=True,
             pool_size=80,
-            max_overflow=19
+            max_overflow=19,
+            echo=True
         )
         self.__sessionmaker = sessionmaker(
             self._engine,
@@ -19,6 +24,10 @@ class Database:
             future=True
         )
         self._session_factory = async_scoped_session(self.__sessionmaker, scopefunc=asyncio.current_task)
+
+    async def on_startup(self):
+        async with self._engine.connect() as conn:
+            await conn.run_sync(ModelBase.metadata.create_all)
 
     async def get_session(self) -> AsyncSession:
         session: AsyncSession = await self._session_factory()

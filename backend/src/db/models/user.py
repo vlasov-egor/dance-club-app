@@ -1,10 +1,10 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
-from . import BaseModel
+from src.db.db import ModelBase
 
 
-class User(BaseModel):
+class User(ModelBase):
     __tablename__ = "Users"
 
     id: int = Column(Integer, primary_key=True)

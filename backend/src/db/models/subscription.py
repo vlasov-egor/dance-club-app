@@ -2,11 +2,11 @@ from datetime import datetime
 
 from sqlalchemy import Integer, Column, ForeignKey, String, DateTime, Float
 
-from . import BaseModel
+from src.db.db import ModelBase
 from .user import User
 
 
-class Subscription(BaseModel):
+class Subscription(ModelBase):
     __tablename__ = 'Subscriptions'
 
     id: int = Column(Integer, primary_key=True)
