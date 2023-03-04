@@ -1,6 +1,4 @@
-import asyncio
-
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 
 from config import Settings
 from src.db.db import Database

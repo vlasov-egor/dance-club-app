@@ -1,15 +1,14 @@
-from sqlalchemy import Column, Integer, String
+import sqlalchemy
 from sqlalchemy.orm import relationship
 
-from src.db.db import ModelBase
+from src.db.db import metadata
 
-
-class User(ModelBase):
-    __tablename__ = "Users"
-
-    id: int = Column(Integer, primary_key=True)
-    fullname: str = Column(String, nullable=True)
-    telegram_alias: str = Column(String, nullable=True)
-    telegram_id: str = Column(String, nullable=True)
-
-    subscriptions = relationship("Subscription", back_populates="user")
+users = sqlalchemy.Table(
+    "Users",
+    metadata,
+    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
+    sqlalchemy.Column("fullname", sqlalchemy.String, nullable=True),
+    sqlalchemy.Column("telegram_alias", sqlalchemy.String, nullable=True),
+    sqlalchemy.Column("telegram_id", sqlalchemy.String, nullable=True),
+    sqlalchemy.Column("subscriptions", relationship("Subscription", back_populates="user"))
+)

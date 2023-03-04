@@ -1,11 +1,10 @@
 import asyncio
-from typing import Any
 
+import sqlalchemy
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_scoped_session
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-ModelBase: Any = declarative_base()
+metadata = sqlalchemy.MetaData()
 
 
 class Database:
@@ -27,7 +26,7 @@ class Database:
 
     async def on_startup(self):
         async with self._engine.connect() as conn:
-            await conn.run_sync(ModelBase.metadata.create_all)
+            await conn.run_sync(metadata.create_all)
 
     async def get_session(self) -> AsyncSession:
         session: AsyncSession = await self._session_factory()
