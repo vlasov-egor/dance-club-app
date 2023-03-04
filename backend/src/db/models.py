@@ -1,5 +1,6 @@
-import sqlalchemy
 import sys
+
+import sqlalchemy
 
 sys.path.append("..")
 metadata = sqlalchemy.MetaData()
