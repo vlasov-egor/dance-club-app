@@ -11,7 +11,8 @@ users = sqlalchemy.Table(
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("fullname", sqlalchemy.String, nullable=True),
     sqlalchemy.Column("telegram_alias", sqlalchemy.String, nullable=True),
-    sqlalchemy.Column("telegram_id", sqlalchemy.String, nullable=True)
+    sqlalchemy.Column("telegram_id", sqlalchemy.String, nullable=True),
+    sqlalchemy.Column("is_admin", sqlalchemy.Boolean, nullable=False)
 )
 
 subscriptions = sqlalchemy.Table(
