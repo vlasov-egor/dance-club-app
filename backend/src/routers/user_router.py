@@ -7,7 +7,7 @@ from src.services.user_service import UserService
 router = APIRouter(prefix="/users")
 
 
-@router.get("/{telegram_user_id}", response_model=UserResponse | None)
+@router.get("/{telegram_user_id}", response_model=UserResponse)
 async def get(telegram_user_id: str, _user_service: UserService = Depends(UserService)):
     return await _user_service.get(telegram_user_id)
 

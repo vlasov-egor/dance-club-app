@@ -9,4 +9,7 @@ class UserResponse(BaseModel):
     telegram_alias: str
     telegram_id: str
     is_admin: bool
-    subscriptions: list[SubscriptionLiteResponse]
+    subscriptions: list[SubscriptionLiteResponse] | None
+
+    class Config:
+        orm_mode = True
