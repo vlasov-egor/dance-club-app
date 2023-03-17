@@ -1,8 +1,16 @@
 from pydantic import BaseModel
 
 
-class UserRequest(BaseModel):
-    fullname: str
-    telegram_alias: str
+class UserRegister(BaseModel):
     telegram_id: str
-    is_admin: bool
+    telegram_alias: str
+    firstname: str
+    lastname: str
+
+
+class UserLogin(BaseModel):
+    telegram_alias: str
+
+
+class UserFilter(BaseModel):
+    telegram_alias: str | None
