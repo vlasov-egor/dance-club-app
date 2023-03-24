@@ -6,11 +6,13 @@ from src.db.db import Database
 from src.routers import user_router
 
 settings = get_settings()
-
-app = FastAPI()
 db = Database(settings.DATABASE_URL)
 
-app.add_event_handler("startup", db.on_startup)
+app = FastAPI(
+    title="Dance-club-API",
+    on_startup=[db.on_startup]
+)
+# app = FastAPI(dependencies=[Depends])
 
 app.include_router(user_router.router)
 

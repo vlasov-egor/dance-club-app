@@ -1,9 +1,10 @@
-from fastapi import Depends, HTTPException
+from fastapi import Depends
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from src.db.db import get_session
 from src.db.models import User
-from src.schemas.user_request import UserFilter, UserRegister
+from src.schemas.user import UserFilter, UserServiceModel
 
 
 class UserService:
@@ -12,22 +13,18 @@ class UserService:
     def __init__(self, db_context: Session = Depends(get_session)):
         self._db_context = db_context
 
-    async def get(self, user_filter: UserFilter) -> User:
-        # Todo:
-        if user_filter.telegram_alias:
-            user = self._db_context.query(User).filter(User.telegram_id == user_filter.telegram_alias).first()
+    async def get(self, user_filter: UserFilter) -> UserServiceModel | None:
+        query = (
+            select(User)
+        )
 
-        if user is None:
-            raise HTTPException(status_code=404, detail="User not found")
+        if user_filter.telegram_id is not None:
+            query = query.where(User.telegram_id == user_filter.telegram_id)
+        if user_filter.telegram_alias is not None:
+            query = query.where(User.telegram_alias == user_filter.telegram_alias)
+        if user_filter.fullname is not None:
+            query = query.where(User.fullname == user_filter.fullname)
 
-        return user
+        result = self._db_context.scalars(query).one_or_none()
 
-    async def register(self, user: UserRegister) -> User:
-        model = User(telegram_id=user.telegram_id,
-                     telegram_alias=user.telegram_alias,
-                     fullname=user.firstname.strip() + ' ' + user.lastname.strip())
-        self._db_context.add(model)
-        self._db_context.commit()
-        self._db_context.refresh(model)
-
-        return model
+        return UserServiceModel.from_orm(result)
