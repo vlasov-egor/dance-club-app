@@ -1,6 +1,8 @@
 FROM python:latest
 WORKDIR /app
 
+RUN apt-get update && apt-get -y install libpq-dev gcc
+
 COPY backend/pyproject.toml ./
 COPY backend/alembic.ini ./
 COPY backend/.env ./
