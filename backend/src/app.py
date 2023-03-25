@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from config import get_settings
+from .config import get_settings
 from src.db.db import Database
 from src.routers import user_router
 
@@ -12,7 +12,6 @@ app = FastAPI(
     title="Dance-club-API",
     on_startup=[db.on_startup]
 )
-# app = FastAPI(dependencies=[Depends])
 
 app.include_router(user_router.router)
 

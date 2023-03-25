@@ -18,20 +18,32 @@ services:
   backend:
     build:
       context: .
-      dockerfile: ./backend/Dockerfile
-    image: dance-backend
-
-    command: poetry run uvicorn api.web.app:app --reload --host 0.0.0.0 --port 8000
+      dockerfile: backend/dockerfile
+    command: poetry run uvicorn src.app:app --reload --proxy-headers
     ports:
       - "80:8000"
     networks:
       - default
 
-  bot:
-    build:
-      context: .
-      dockerfile: ./bot/Dockerfile
-    image: dance-bot
-    command: python3 -m src.bot
-    networks:
-      - default
+#  bot:
+#    build:
+#      context: .
+#      dockerfile: ./bot/dockerfile
+#    image: dance-bot
+#    command: python3 -m src.bot
+#    networks:
+#      - default
+
+#  frontend:
+#    ...
+
+#  nginx:
+#    build:
+#      context: .
+#      dockerfile: nginx/dockerfile
+#    image: nginx
+#    ports:
+#      - "403:403"
+#    environment:
+#      - NGINX_HOST=foobar.com
+#      - NGINX_PORT=403
