@@ -1,1 +1,1 @@
-# dance-club-attendance-check-in
+# dance-club-app
