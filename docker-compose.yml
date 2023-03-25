@@ -25,6 +25,9 @@ services:
     networks:
       - default
 
+networks:
+  default:
+    name: "dance_club_app_network"
 #  bot:
 #    build:
 #      context: .
