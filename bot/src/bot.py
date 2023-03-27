@@ -2,8 +2,8 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
-from config import get_config
-from handlers.admins_handlers import admin_start_handler
+from .config import get_config
+from .handlers.admins_handlers import admin_start_handler
 
 config = get_config()
 bot = Bot(token=config.TELEGRAM_BOT_TOKEN)

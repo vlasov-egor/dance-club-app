@@ -6,7 +6,7 @@ class Config(BaseSettings):
     TELEGRAM_BOT_TOKEN: str
 
     class Config:
-        env_file = "../.env"
+        env_file = ".env"
 
 
 @lru_cache()

@@ -29,7 +29,7 @@ services:
     build:
       context: .
       dockerfile: bot/dockerfile
-    command: python3 -m src.bot
+    command: poetry run python -m src.bot
     networks:
       - default
 
