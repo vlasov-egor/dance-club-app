@@ -25,28 +25,14 @@ services:
     networks:
       - default
 
+  bot:
+    build:
+      context: .
+      dockerfile: bot/dockerfile
+    command: python3 -m src.bot
+    networks:
+      - default
+
 networks:
   default:
     name: "dance_club_app_network"
-#  bot:
-#    build:
-#      context: .
-#      dockerfile: ./bot/dockerfile
-#    image: dance-bot
-#    command: python3 -m src.bot
-#    networks:
-#      - default
-
-#  frontend:
-#    ...
-
-#  nginx:
-#    build:
-#      context: .
-#      dockerfile: nginx/dockerfile
-#    image: nginx
-#    ports:
-#      - "403:403"
-#    environment:
-#      - NGINX_HOST=foobar.com
-#      - NGINX_PORT=403
