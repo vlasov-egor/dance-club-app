@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+h1 {
+  color: var(--tg-theme-text-color);
+}
+
+p {
+  color: var(--tg-theme-hint-color);
+}

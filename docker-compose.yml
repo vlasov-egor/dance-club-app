@@ -27,16 +27,17 @@ services:
     networks:
       - default
 
-  frontend:
-    container_name: dance-club-app-frontend
-    build:
-      context: .
-      dockerfile: frontend/dockerfile
-    command: npm start
-    ports:
-      - "30:3000"
-    networks:
-      - default
+# Todo: uncomment in production
+#  frontend:
+#    container_name: dance-club-app-frontend
+#    build:
+#      context: .
+#      dockerfile: frontend/dockerfile
+#    command: npm start
+#    ports:
+#      - "30:3000"
+#    networks:
+#      - default
 
   bot:
     container_name: dance-club-app-bot
