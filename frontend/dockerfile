@@ -1,0 +1,9 @@
+FROM node:latest
+
+WORKDIR /app
+RUN apt update -y && apt install -y build-essential libpq-dev
+COPY frontend/ ./
+
+RUN npm install
+
+EXPOSE 3000

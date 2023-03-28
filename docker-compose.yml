@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   postgres:
+    container_name: dance-club-app-postgres
     image: postgres:13.3
     restart: always
     environment:
@@ -16,6 +17,7 @@ services:
       - default
 
   backend:
+    container_name: dance-club-app-backend
     build:
       context: .
       dockerfile: backend/dockerfile
@@ -25,7 +27,19 @@ services:
     networks:
       - default
 
+  frontend:
+    container_name: dance-club-app-frontend
+    build:
+      context: .
+      dockerfile: frontend/dockerfile
+    command: npm start
+    ports:
+      - "30:3000"
+    networks:
+      - default
+
   bot:
+    container_name: dance-club-app-bot
     build:
       context: .
       dockerfile: bot/dockerfile
