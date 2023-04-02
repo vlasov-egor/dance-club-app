@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header/Header";
+import Button from "./components/Button/Button"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App: React.FC = () => {
+    return (
+        <div className="App">
+            <header>
+                <Header text={"Имя Фамилия"}/>
+                <Header text={"Какая-нибудь другая инфа(ближайшее занятие или и т.д.)"}/>
+            </header>
+            <main>
+                <Button text={"Клиенты"}/>
+                <Button text={"Занятия"}/>
+                <Button text={"Абонементы"}/>
+            </main>
+        </div>
+    );
 }
 
 export default App;

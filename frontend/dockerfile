@@ -2,7 +2,7 @@ FROM node:latest
 
 WORKDIR /app
 RUN apt update -y && apt install -y build-essential libpq-dev
-COPY frontend/ ./
+COPY frontend/src/ ./
 
 RUN npm install
 
