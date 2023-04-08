@@ -5,12 +5,12 @@ interface HeaderProps {
     text: string;
 }
 
-const Header = (props: HeaderProps): JSX.Element => {
+const FullNameHeader = (props: HeaderProps): JSX.Element => {
     return (
-        <div className="Header">
+        <div className="FullNameHeader">
             {props.text}
         </div>
     )
 }
 
-export default Header;
+export default FullNameHeader;

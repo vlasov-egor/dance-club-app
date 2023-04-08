@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/Header/Header";
-import Button from "./components/Button/Button"
+import Header from "./components/MainMenu/Header/Header";
+import EntitiesMenu from "./components/MainMenu/EntitiesMenu/EntitiesMenu";
+
+// let tg = window.Telegram.WebApp;
 
 const App: React.FC = () => {
     return (
         <div className="App">
             <header>
-                <Header text={"Имя Фамилия"}/>
-                <Header text={"Какая-нибудь другая инфа(ближайшее занятие или и т.д.)"}/>
+                <Header/>
             </header>
             <main>
-                <Button text={"Клиенты"}/>
-                <Button text={"Занятия"}/>
-                <Button text={"Абонементы"}/>
+                <EntitiesMenu/>
             </main>
         </div>
     );
