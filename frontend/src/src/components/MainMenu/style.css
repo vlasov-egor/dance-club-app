@@ -16,14 +16,13 @@
     display: flex;
     flex-direction: column;
     margin: 5px;
-    background: #F8C8F3;
-    border-radius: 10px;
 }
 
 .MainMenu .MenuButton button {
     height: 60px;
     border: none;
-    background: transparent;
+    background: #F8C8F3;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
 }
@@ -38,6 +37,6 @@
 .MenuButtonText {
     font-size: 18px;
     font-weight: 400;
-    padding: 10px ;
+    padding: 10px;
 }
 
