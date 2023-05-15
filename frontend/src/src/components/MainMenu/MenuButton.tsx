@@ -1,5 +1,4 @@
 import React from 'react';
-import Client from "../Clients/Client";
 
 interface ButtonProps {
     text: string,
@@ -7,7 +6,7 @@ interface ButtonProps {
     onClick: React.Dispatch<React.SetStateAction<string>>
 }
 
-function MenuButton(props: ButtonProps) {
+export default function MenuButton(props: ButtonProps) {
     return (
         <div className="MenuButton">
             <button onClick={() => props.onClick(props.text)}>
@@ -17,5 +16,3 @@ function MenuButton(props: ButtonProps) {
         </div>
     );
 }
-
-export default MenuButton;

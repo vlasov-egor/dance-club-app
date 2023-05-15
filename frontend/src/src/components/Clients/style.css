@@ -26,7 +26,7 @@
 
 .ClientInfoButton {
     position: absolute;
-    margin: auto 0 auto 0;
+    margin: 3px;
     right: 10px
 }
 
@@ -34,4 +34,31 @@
     background: transparent;
     border: none;
     border-radius: 10px;
+}
+
+.EditClientForm {
+}
+
+.EditClientFormInput {
+    border: black;
+    border-radius: 10px;
+    padding: 10px 0 10px 7px;
+    margin: 10px 0 2px 0;
+    width: 100%;
+    background: darkgrey;
+}
+
+.EditClientFormButton {
+    margin: 10px 5px 0px 0px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+}
+
+/*Todo: update button colors*/
+.EditClientForm .UpdateButton {
+    background: orange;
+}
+
+.EditClientForm .DeleteButton {
+    background: red;
 }

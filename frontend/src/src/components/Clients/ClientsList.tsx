@@ -1,8 +1,10 @@
 import React from 'react';
 import Client from "./Client";
 import './style.css'
+import Modal from "../Modal";
+import EditClient from "./EditClient";
 
-function ClientsList() {
+export default function ClientsList() {
     //  Todo: clients from back-end
     const clients: string[] = ["Генадий Пистолетов", "Анатолий Чертозвонцев", "Яша Лава"];
     return (
@@ -12,4 +14,3 @@ function ClientsList() {
     );
 }
 
-export default ClientsList;
