@@ -4,7 +4,7 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str
+    database_url: str
 
     class Config:
         env_file = ".env"

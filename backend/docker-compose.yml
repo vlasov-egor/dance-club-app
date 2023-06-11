@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 512M
+    restart: always
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "6432:5432"
+    networks:
+      - default
+
+networks:
+  default:
+    name: dance_club_network
