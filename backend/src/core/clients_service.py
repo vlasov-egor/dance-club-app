@@ -17,3 +17,13 @@ class ClientsService:
         stmt = select(Client).order_by(Client.name)
         result = await self._db_session.execute(stmt)
         return result.scalars().all()
+
+    async def create(self, client: Client) -> Client:
+        client.teacher_id = 1
+        client.used_sessions = 0
+
+        self._db_session.add(client)
+        await self._db_session.commit()
+        await self._db_session.refresh(client)
+
+        return client
