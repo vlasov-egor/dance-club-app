@@ -1,2 +1,1 @@
-from . import client
-from . import teacher
+from . import client, teacher, subscription

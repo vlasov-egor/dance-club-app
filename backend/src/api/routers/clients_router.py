@@ -1,10 +1,7 @@
-from typing import Annotated
-
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 
 from src.api.schemas.client import ClientCreateRequest
 from src.core import ClientsServiceDep
-from src.core.clients_service import ClientsService
 from src.database.models.client import Client
 
 router = APIRouter()

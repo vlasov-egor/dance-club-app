@@ -10,8 +10,4 @@ class Client(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
 
-    available_sessions = Column(Float)
-    used_sessions = Column(Float)
-
-    teacher_id = Column(Integer, ForeignKey("Teachers.id"), nullable=False)
-    teacher = relationship("Teacher", back_populates="clients")
+    subscriptions = relationship("Subscription", back_populates="client", cascade="all, delete-orphan")

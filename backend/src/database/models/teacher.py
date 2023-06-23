@@ -10,4 +10,4 @@ class Teacher(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
 
-    clients = relationship("Client", back_populates="teacher", cascade="all, delete-orphan")
+    subscriptions = relationship("Subscription", back_populates="teacher", cascade="all, delete-orphan")
